@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <!-- meta tag -->
+    <meta charset="utf-8">
+    <title>{$meta_title}</title>
+    <meta content="{$meta_keywords}" name="keywords" />
+    <meta content="{$meta_description}" name="description" />
+    <!-- responsive tag -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap v4 css -->
+    <link href="{THEME_PATH}assets/global/css/cms.css" rel="stylesheet" type="text/css" />
+    <!-- font-awesome css -->
+    <link rel="stylesheet" type="text/css" href="{HOME_THEME_PATH}css/font-awesome.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" type="text/css" href="{HOME_THEME_PATH}css/animate.css">
+    <!-- hover css -->
+    <link rel="stylesheet" type="text/css" href="{HOME_THEME_PATH}css/hover-min.css">
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" type="text/css" href="{HOME_THEME_PATH}css/owl.carousel.css">
+    <!-- flaticon css  -->
+    <link rel="stylesheet" type="text/css" href="{HOME_THEME_PATH}css/flaticon.css">
+    <!-- rsmenu CSS -->
+    <link rel="stylesheet" type="text/css" href="{HOME_THEME_PATH}css/rsmenu-main.css">
+    <!-- rsmenu transitions CSS -->
+    <link rel="stylesheet" type="text/css" href="{HOME_THEME_PATH}css/rsmenu-transitions.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="{HOME_THEME_PATH}css/style.css">
+    <!-- switch color presets css -->
+    <link id="switch_style" href="{HOME_THEME_PATH}css/index.css" rel="stylesheet" type="text/css">
+    <!-- responsive css -->
+    <link rel="stylesheet" type="text/css" href="{HOME_THEME_PATH}css/responsive.css">
+    <link href="{HOME_THEME_PATH}web/css/custom.css" rel="stylesheet" type="text/css" />
+    <!-- 系统关键js(所有自建模板必须引用) -->
+    <script type="text/javascript">var assets_path = '{THEME_PATH}assets/';var is_mobile_cms = '{IS_MOBILE}';</script>
+    <script src="{LANG_PATH}lang.js" type="text/javascript"></script>
+    <script src="{THEME_PATH}assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="{THEME_PATH}assets/js/cms.js" type="text/javascript"></script>
+    <!-- 系统关键js结束 -->
+</head>
+<body class="home1">
+
+<!--Full width header Start-->
+<section class="full-width-header">
+    <!-- Toolbar Start -->
+    <div class="toolbar-area hidden-sm hidden-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-7 col-xs-12">
+                    <div class="toolbar-contact">
+                        <ul class="top-menu">
+                            <li><i class="fa fa-phone"></i><a href="tel:{dr_site_info('tel')}"> {dr_site_info('tel')}</a></li>
+                            <li><i class="fa fa-envelope-o"></i><a href="mailto:{dr_site_info('email')}">{dr_site_info('email')}</a></li>
+                            <li><i class="fa fa-qq"></i><a href="http://wpa.qq.com/msgrd?v=3&uin={dr_site_info('qq')}&site=qq&menu=yes" target="_blank">{dr_site_info('qq')}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-5 col-xs-12">
+                    <div class="toolbar-sl-share">
+                        <ul id="dr_member_info">
+                        </ul>
+                    </div>
+                    {dr_ajax_template('dr_member_info', 'member.html')}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Toolbar End -->
+
+    <!--Header Start-->
+    <header id="rs-header" class="rs-header">
+        <!-- Menu Start -->
+        <div class="menu-area menu-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-12">
+                        <div class="logo-area">
+                            <a href="/"><img src="{SITE_LOGO}" alt="xunruicms"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-12">
+                        <div class="main-menu">
+                            <a class="rs-menu-toggle"><i class="fa fa-bars"></i> 导航 </a>
+                            <nav class="rs-menu">
+                                <ul class="nav-menu">
+
+                                    <li {if $indexc}class="current-menu-item current_page_item"{/if} ><a href="/">首页</a></li>
+
+                                    {category module=share pid=0}
+                                    <li {if IS_SHARE && $catid && in_array($catid, $t.catids)}class="current-menu-item current_page_item"{/if}>
+                                    <a  href="{$t.url}">{$t.name}</a>
+                                    {if $t.child}
+                                        <ul class="sub-menu">
+                                            {category module=share pid=$t.id return=t2}
+                                            <li class="{if IS_SHARE && $catid && in_array($catid, $t2.catids)} active {/if}">
+                                                <a href="{$t2.url}">{$t2.name}</a>
+                                            </li>
+                                            {/category}
+                                        </ul>
+                                    {/if}
+                                    </li>
+                                    {/category}
+                                   
+                                    
+                                </ul> 
+                            </nav>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Menu End -->
+    </header>
+    <!--Header End-->
+</section>
+<!--Full width header End-->

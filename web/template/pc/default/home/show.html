@@ -1,0 +1,42 @@
+{template "header.html"}
+<div class="rs-breadcrumbs">
+    <div class="rs-breadcrumbs-inner">
+        <div class="container">
+            <div class="breadcrumbs-inner">
+                <h3 class="page-title">{$cat.name}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="rs-blog-details" class="rs-blog-details sec-spacer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog-wrapper wow slideInLeft">
+                    <div class="blog-grid">
+
+                        <div class="blog-contents">
+                            <h3 class="title" style="margin:0">{$title} </h3>
+                            <div class="feedback" style="margin-bottom:30px;">
+                                <div class="admin">
+                                    {dr_date($_inputtime)}
+                                </div>
+                            </div> <!-- .feedback end -->
+
+                            {$content}
+                        </div>
+                    </div><!-- .blog-grid end -->
+
+
+
+                </div> <!-- .blog-wrapper end -->
+            </div> <!-- .col-md-8 end -->
+
+
+        </div> <!-- .row end -->
+    </div> <!-- .container end -->
+</section>
+
+
+{template "footer.html"}

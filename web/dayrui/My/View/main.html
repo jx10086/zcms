@@ -1,0 +1,66 @@
+{template "header.html"}
+
+<div class="row">
+
+    <div class="col-md-6 col-sm-6">
+
+        {if $ci->_is_admin_auth('')}
+        <div class="portlet light bordered myportlet ">
+            <div class="portlet-title tabbable-line">
+                <div class="caption">
+                    <i class="fa fa-cog"></i>
+                    <span class="caption-subject"> <a href="{dr_url('cloud/index')}">{dr_lang('程序信息')}</a> </span>
+                </div>
+            </div>
+            <div class="portlet-body">
+
+                <ul class="use-info">
+                    {if $license.name && $license.url}
+                    <li>
+                        <span>框架版本</span>
+                        <a target="_blank" href="{$license.url}">{$cmf_version}</a>
+                        <a id="dr_cmf_update" href="{dr_url('cloud/update')}" style="margin-left: 10px;display: none" class="badge badge-danger badge-roundless">  </a>
+                    </li>
+
+                    <li>
+                        <span>官方网站</span>
+                        <a target="_blank" href="{$license.url}" style="margin-right: 10px;">{$license.name}</a>
+                    </li>
+                    {else}
+                    <li>
+                        <span>框架版本</span>
+                        <a target="_blank" href="https://www.xunruicms.com/">{$cmf_version}</a>
+                        <a id="dr_cmf_update" href="{dr_url('cloud/update')}" style="margin-left: 10px;display: none" class="badge badge-danger badge-roundless">  </a>
+                    </li>
+
+                    <li>
+                        <span>官方网站</span>
+                        <a target="_blank" href="https://www.xunruicms.com/" style="margin-right: 10px;">www.xunruicms.com</a>
+                    </li>
+                    {/if}
+                    {if !defined('SYS_NOT_UPDATE') || !SYS_NOT_UPDATE}
+                    <script>
+                        $(function () {
+                            $.ajax({type: "GET",dataType:"json", url: "{dr_url('cloud/check_version')}&id=cms-1&isindex=1",
+                                success: function(json) {
+                                    if (json.code) {
+                                        $('#dr_cmf_update').show();
+                                        $('#dr_cmf_update').html(json.msg);
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                    {/if}
+                </ul>
+            </div>
+        </div>
+        {/if}
+        {template "main/couts.html"}
+    </div>
+
+    <div class="col-md-6 col-sm-6">
+        {template "main/notice.html"}
+    </div>
+</div>
+{template "footer.html"}

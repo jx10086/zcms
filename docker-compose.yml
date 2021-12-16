@@ -1,0 +1,40 @@
+version: '3'
+services:
+ # Nginx server configuration   
+  web:
+    image: nginx:1.17
+    container_name: webserver
+    depends_on:
+      - docker-mysql
+      - php
+    links:
+      - docker-mysql
+      - php
+    volumes:
+      - ./web:/app
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+ # Php-fpm configuration
+  php:
+    #build: .
+    image: bitnami/php-fpm:7.4
+    volumes:
+      #- ./web:/var/www/html
+      - ./web:/app
+      # - ./php:/usr/local/etc/php
+ # Mysql configuration
+  docker-mysql:
+    image: mysql:5.7
+    container_name: mysql-dayrui
+    restart: always
+    environment:
+        - MYSQL_DATABASE=dayrui
+        - MYSQL_ROOT_PASSWORD=root123
+        - MYSQL_USER=dayrui
+        - MYSQL_PASSWORD=dayrui123
+    ports:
+        - "3306:3306"
+    volumes:
+        - ./dbdata:/var/lib/mysql
+

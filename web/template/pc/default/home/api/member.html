@@ -1,0 +1,9 @@
+
+<li><a href="http://www.xunruicms.com" target="_blank">技术支持</a></li>
+{if $member}
+<li><a href="{MEMBER_URL}">会员中心</a></li>
+<li><a href="javascript:;" onclick="dr_loginout('退出成功')">我要退出 </a></li>
+{else}
+<li><a href="{dr_member_url('register/index')}">用户注册</a></li>
+<li><a href="{dr_member_url('login/index')}">用户登录</a></li>
+{/if}

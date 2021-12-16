@@ -1,0 +1,8 @@
+a:3:{s:4:"time";i:1639644335;s:3:"ttl";i:3600;s:4:"data";s:293:"<select class="bs-select form-control" name="catid">
+<option value='0'>--</option>
+<option  value='1'>新闻动态</option>
+<option  value='7'>&nbsp;&nbsp;├&nbsp;互联网</option>
+<option  value='8'>&nbsp;&nbsp;└&nbsp;PHP技术</option>
+<option  value='2'>图片展示</option>
+</select>
+";}

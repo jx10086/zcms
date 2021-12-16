@@ -1,0 +1,61 @@
+{template "header.html"}
+<div class="rs-breadcrumbs">
+    <div class="rs-breadcrumbs-inner">
+        <div class="container">
+            <div class="breadcrumbs-inner">
+                <h3 class="page-title">{$cat.name}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Blog News Start -->
+<section id="rs-blog-news" class="rs-blog-news pt-120 sec-spacer">
+    <div class="container">
+        
+
+        <div class="row">
+
+            {module catid=$catid order=updatetime page=1}
+                <div class="col-md-4">
+                    <div class="blog-grid" style="border: 1px solid #eee;padding:2px; margin-bottom:20px;">
+                        <div class="blog-img">
+                            <a href="{$t.url}"><img src="{dr_thumb($t.thumb, 300, 200)}"></a>
+                            <div class="tool-right">
+                                <div class="top">
+                                    <div>{dr_date($t._updatetime, 'Y')}</div>
+                                    {dr_date($t._updatetime, 'm月d')}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog-contents wow fadeInRight" style="padding: 10px;height:120px;overflow: hidden;">
+                            <div style="margin:10px 0;"  class="title">
+                                <a style="color: #212529;font-size: 16px;" href="{$t.url}">{dr_strcut($t.title, 18)}</a>
+                            </div>
+                            <p class="some-text" style="height: 45px;overflow: hidden;">{dr_strcut(dr_clearhtml($t.description), 60)}</p>
+                        </div>
+                    </div>
+                </div>
+                {/module}
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="pagination-style">
+                    {str_replace('pagination', '', $pages)}
+                </div>
+            </div>
+        </div>
+        
+
+        
+
+
+    </div>
+</section>
+<!-- Blog News End -->
+
+{template "footer.html"}
